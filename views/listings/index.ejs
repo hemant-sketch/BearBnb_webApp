@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>BearBnb</title>
+</head>
+<body>
+    <h3>All Listings</h3>
+    <ul>
+        <% for(let listings of allListings) { %>
+            <li>
+                <a href = "/listings/<%= listings._id %>"><%= listings.title %></a>
+            </li>
+        <% } %>
+    </ul>
+</body>
+</html>
