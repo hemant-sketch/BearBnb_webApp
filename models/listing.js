@@ -12,7 +12,7 @@ const listingSchema = new Schema ({
             type : String,
             default: "https://unsplash.com/photos/brown-wooden-house-surrounded-by-trees-at-daytime-xvY3zEBk0Ic",
             set: (v) => v == "" ? "https://unsplash.com/photos/brown-wooden-house-surrounded-by-trees-at-daytime-xvY3zEBk0Ic"
-            : v,
+            : v,   //v original value
         },
         filename: String,
     },
