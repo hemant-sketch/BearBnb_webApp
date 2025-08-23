@@ -1,6 +1,13 @@
 body {
     font-family: "Plus Jakarta Sans", sans-serif !important;
     background-color: pink;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.container{
+    flex : 1;
 }
 
 .navbar{
@@ -68,4 +75,35 @@ body {
 
 .car-text p {
     font-weight: 400;
+}
+
+.listing-link {
+    text-decoration: none;
+}
+
+/* Card Overlay */
+.card-img-overlay {
+    opacity: 0;
+}
+
+.card-img-overlay:hover {
+    opacity: 0.2;
+    background-color: white;
+}
+
+/* New Page */
+.add-btn {
+    background-color: brown !important;
+    border: none !important;
+}
+
+/* Edit Page */
+.edit-btn {
+    background-color: brown !important;
+    border: none !important;
+}
+
+/* Show Page */
+.show-img {
+    height: 30vh;
 }
