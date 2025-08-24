@@ -5,6 +5,7 @@ const Listing = require("../models/listing.js");
 main()
     .then(() => {
         console.log("Connected to DB");
+        initDB();
     })
     .catch(err => console.log(err));
 
@@ -18,4 +19,3 @@ const initDB = async () => {
     console.log("Data was intialized");
 }
 
-initDB();
