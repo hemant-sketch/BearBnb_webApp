@@ -3,33 +3,32 @@ const app = express();
 const users = require("./routes/user.js")
 const posts = require("./routes/posts.js")
 const session = require("express-session")
-const flash = require('connect-flash')
-//const cookieParser = require("cookie-parser")
+const flash = require("connect-flash")
+const cookieParser = require("cookie-parser")
 const path = require("path");
-const { log } = require("console");
 
-app.set('views', path.join(__dirname, 'views'));
 app.set('view engine','ejs');
+app.set('views', path.join(__dirname, 'views'));
 
 const sessionOptions = {
     secret : "mysupersecretstring",
-    resave : false,
-    saveUninitialized : true
+    resave : false,  //kuch bi change aaye toh bhi krna save
+    saveUninitialized : true //
 }
 
 app.use(session(sessionOptions));
+app.use(cookieParser());
 app.use(flash());
+
 
 
 app.use("/register", (req, res) => {
     let {name="anonymous"} = req.query;
     req.session.name = name;
-    if(name === "anonymous"){
-        req.flash("error","some error occured!")
-    }else{
-        req.flash("success","user registered successfully!")
-    }
-    res.redirect("/hello");
+    // console.log(req.session.name);
+    req.flash("success", "Registered successfully!");
+    
+     res.send(name);
 })
 
 // app.use("/hello", (req, res)=>{
@@ -39,10 +38,9 @@ app.use("/register", (req, res) => {
 // })
 
 app.get("/hello", (req, res)=>{
-    req.locals.successMsg = req.flash("success");
-    req.locals.errorMsg = req.flash("error");
-    res.render("page.ejs", {name : req.session.name});  
+    res.render("page.ejs", {name : req.session.name, msg : req.flash("success")});
 })
+        
 
 // app.get("/reqcount", (req, res) => {
 //     if(req.session.count){
