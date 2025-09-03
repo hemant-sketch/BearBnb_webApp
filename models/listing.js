@@ -10,9 +10,10 @@ const listingSchema = new Schema ({
     image : {
         url :{
             type : String,
-            default: "https://unsplash.com/photos/brown-wooden-house-surrounded-by-trees-at-daytime-xvY3zEBk0Ic",
-            set: (v) => v == "" ? "https://unsplash.com/photos/brown-wooden-house-surrounded-by-trees-at-daytime-xvY3zEBk0Ic"
-            : v,   //v original value
+            // default mtlb agar aayi hi nahi kuch bhi toh yeh default
+            default: "https://images.unsplash.com/photo-1531183436556-51f742660c8d?q=80&w=1240&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+            set: (v) => v === "" ? "https://images.unsplash.com/photo-1531183436556-51f742660c8d?q=80&w=1240&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+            : v,   //v original value  //yeh free image unsplash se mil jaati
         },
         filename: String,
     },

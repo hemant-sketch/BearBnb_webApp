@@ -15,7 +15,7 @@ const flash = require("connect-flash");
 
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine','ejs');
-app.use(express.urlencoded({extended : true}));
+app.use(express.urlencoded({extended : true})); //req body ki body ko parse krne ke liye
 app.use(methodOverride('_method'))
 app.engine('ejs', ejsMate);
 app.use(express.static(path.join(__dirname, "/public")));
@@ -48,7 +48,7 @@ app.use("/listings", listings);
 
 main()
     .then(() => {
-        console.log("Connected to DB");
+        console.log("connected to DB");
     })
     .catch(err => console.log(err));
 
@@ -58,18 +58,18 @@ async function main() {
 
 
 
-// app.get("/testListing", async (req, res) => {
-//     let sampleListing = new Listing ({
-//         title : "My New Villa",
-//         description : "By the mountains",
-//         price : 1200,
-//         loaction : "Chamoli, Uttrakhand",
-//         country : "India",
-//     })
-//     await sampleListing.save();
-//     console.log("sample was saved");
-//     res.send("successful test");
-// });
+app.get("/testListing", async (req, res) => {
+    let sampleListing = new Listing ({
+        title : "My New Villa",
+        description : "By the mountains",
+        price : 1200,
+        loaction : "Chamoli, Uttrakhand",
+        country : "India",
+    })
+    await sampleListing.save();
+    console.log("sample was saved");
+    res.send("successful test");
+});
 
 app.use((req, res, next) => {
     next(new ExpressError(404, "Page not found!"));
@@ -82,6 +82,6 @@ app.use((err, req, res, next) => {
 })
 
 app.listen(8080, () =>{
-    console.log("Server listening on port 8080");
+    console.log("server listening on port 8080");
 });
 

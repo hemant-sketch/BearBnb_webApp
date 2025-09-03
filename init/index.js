@@ -5,7 +5,6 @@ const Listing = require("../models/listing.js");
 main()
     .then(() => {
         console.log("Connected to DB");
-        initDB();
     })
     .catch(err => console.log(err));
 
@@ -16,6 +15,7 @@ async function main() {
 const initDB = async () => {
     await Listing.deleteMany({});
     await Listing.insertMany(initdata.data);
-    console.log("Data was intialized");
+    console.log("data was intialized");
 }
 
+initDB();

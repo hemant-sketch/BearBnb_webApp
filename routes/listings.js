@@ -16,15 +16,18 @@ const validateListing = (req, res, next) => {
     }
 };
 
+// Index Route
 router.get("/", async(req,res) => {
     const allListings = await Listing.find();
     res.render("listings/index.ejs", {allListings});
 })
 
+// New Route  // also should be above /:id 
 router.get("/new",(req, res) => {
     res.render("./listings/new.ejs");
 })
 
+// Show Route
 router.get("/:id", async(req,res) => {
     let {id} = req.params;
     const listing = await Listing.findById(id);
@@ -38,7 +41,7 @@ router.post("/", validateListing,wrapAsync(async(req, res) => {
     if(result.error) {
         throw new ExpressError(400, result.error);
     }
-    const newListing = new Listing(req.body.listing); 
+    const newListing = new Listing(req.body.listing); //listing object
     await newListing.save();
     req.flash("success", "Successfully made a new listing!");
     res.redirect("/listings");
@@ -58,6 +61,7 @@ router.put("/:id", validateListing, wrapAsync(async(req, res) => {
     res.redirect(`/listings/${id}`);
 }))
 
+// Delete Route
 router.delete("/:id", async(req, res) => {
     let {id} = req.params;
     let deletedListing = await Listing.findByIdAndDelete(id);
