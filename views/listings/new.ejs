@@ -4,7 +4,8 @@
     <div class="col-8 offset-2">
     <br><br>
     <h3>Create a New Listing</h3>
-    <form method="POST" action="/listings" novalidate class="needs-validation">
+    <form method="POST" action="/listings" novalidate class="needs-validation"> 
+        <!-- nonvalidate browser ke default no htaega aur need-validation is bootstarp style aara -->
         <div class="mb-3">
             <label for="title" class="form-label">Title</label>
             <!-- neeche listing ko ek object bna diya aur title uski key hojaegi -->
@@ -31,14 +32,14 @@
                 <label for="price" class="form-label">Price</label>
                 <input name="listing[price]" placeholder="1200"  class="form-control" required >
                 <div class="invalid-feedback">
-                    Please add a valid Price!
+                    Price should be valid!
                 </div>
             </div>
             <div class="mb-3 col-md-8">
                 <label for="country" class="form-label">Country</label>
                 <input name="listing[country]" placeholder="India" type="text" class="form-control" required>
                 <div class="invalid-feedback">
-                    Please enter the country name!
+                    Country name should be valid!
                 </div>
             </div>
         </div>
@@ -47,12 +48,11 @@
             <label for="location" class="form-label">Location</label>
             <input name="listing[location]" placeholder="Dehradun, Uttrakhand" type="text" class="form-control" required>
             <div class="invalid-feedback">
-                Please enter the location!
+                Location should be valid!
             </div>
         </div>
         <button class="btn btn-dark add-btn mt-3">Submit</button>
     </form>
     </div>
 </div>
-<script src="/js/script.js"></script>
 </body>

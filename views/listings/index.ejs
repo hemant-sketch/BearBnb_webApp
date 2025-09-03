@@ -6,7 +6,7 @@
         <button>Create New Listing</button>
     </form> -->
 
-    <div class="row row-cols-lg-3 row-cols-lg-2 row-cols-sm-1">
+    <div class="row row-cols-lg-3 row-cols-md-2 row-cols-sm-1">
         <% for(let listings of allListings) { %>
             <a href="/listings/<%= listings._id %>" class="listing-link">
                 <div class="card col">

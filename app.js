@@ -11,7 +11,9 @@ const {listingSchema} = require("./schema.js");
 const listings = require("./routes/listings.js")
 const session = require("express-session");
 const flash = require("connect-flash");
-
+const passport = require("passport");
+const LocalStrategy = require("passport-local");
+const User = require("./models/user.js")
 
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine','ejs');
@@ -37,6 +39,10 @@ app.get("/", (req, res) => {
 
 app.use(session(sessionOptions))
 app.use(flash());
+
+app.use(passport.initialize());
+app.use(passport.session);
+passport.use(new LocalStrategy(User.authenticate()));
 
 app.use((req, res, next)=> {
     res.locals.success = req.flash("success");
@@ -78,7 +84,6 @@ app.use((req, res, next) => {
 app.use((err, req, res, next) => {
     let {statusCode=500, message="Something went wrong!"} = err;
     res.status(statusCode).render("error.ejs", {message});
-    // res.status(statusCode).send(message);
 })
 
 app.listen(8080, () =>{
