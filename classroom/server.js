@@ -73,7 +73,7 @@ app.get("/hello", (req, res)=>{
 //     console.log(req.signedCookies);
 // })
 
-// app.get("/getcookies", (req,res) => {
+//1 app.get("/getcookies", (req,res) => {
 //     res.cookie("greet", "hellooooooo");
 //     res.cookie("name", "Hemant");
 //     res.send("sent you some cookies");

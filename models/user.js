@@ -9,7 +9,7 @@ const userSchema = new Schema({
     }
 })
 
-User.plugin(passportLocalMongoose);  // username hashing salting and hashpass
+userSchema.plugin(passportLocalMongoose);  // username hashing salting and hashpass
                                     // apne aap krdeta set
 
 module.exports = mongoose.model("User", userSchema);

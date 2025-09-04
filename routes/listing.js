@@ -6,6 +6,7 @@ const ExpressError = require("../utils/ExpressError.js");
 const Listing = require("../models/listing.js");
 
 
+
 const validateListing = (req, res, next) => {
     let {error} = listingSchema.validate(req.body);
     if(error) {
@@ -24,13 +25,21 @@ router.get("/", wrapAsync(async(req,res) => {
 
 // New Route  // also should be above /:id 
 router.get("/new",(req, res) => {
+    if(!req.isAuthenticated()) {
+        req.flash("error","you need to log in first!");
+        return res.redirect("/login");
+    }
     res.render("./listings/new.ejs");
 })
 
 // Show Route
 router.get("/:id", wrapAsync(async(req,res) => {
     let {id} = req.params;
-    const listing = await Listing.findById(id);
+    const listing = await Listing.findById(id).populate("reviews");
+    if(!listing){
+        req.flash("error", "Listing does not exist!");
+        return res.redirect(`/listings`);
+    }
     res.render("listings/show.ejs", {listing});
 }))
 
@@ -46,6 +55,10 @@ router.post("/", validateListing, wrapAsync(async(req, res) => {
 router.get("/:id/edit", wrapAsync(async(req,res)=>{
     let {id} = req.params;
     const listing = await Listing.findById(id);
+    if(!listing){
+        req.flash("error", "Listing does not exist!");
+        return res.redirect(`/listings`);
+    }
     res.render("listings/edit.ejs", {listing});
 }))
 
@@ -53,6 +66,7 @@ router.get("/:id/edit", wrapAsync(async(req,res)=>{
 router.put("/:id", validateListing, wrapAsync(async(req, res) => {
     let {id} = req.params;
     await Listing.findByIdAndUpdate(id, {...req.body.listing});
+    req.flash("success", "Listing Updated!");
     res.redirect(`/listings/${id}`);
 }))
 
@@ -61,7 +75,10 @@ router.delete("/:id", wrapAsync(async(req, res) => {
     let {id} = req.params;
     let deletedListing = await Listing.findByIdAndDelete(id);
     console.log("Deleted listing: " + deletedListing);
+    req.flash("success", "Listing Deleted!");
     res.redirect("/listings");
 }))
+
+
 
 module.exports = router;
