@@ -61,6 +61,7 @@ app.use((req, res, next) => {
     res.locals.success = req.flash("success");
     // console.log(res.locals.success);  // to check empty success
     res.locals.error = req.flash("error");
+    res.locals.currUser = req.user;
     next();
 })
 
