@@ -1,3 +1,8 @@
+if(process.env.NODE_ENV != "production") {
+    require('dotenv').config();
+    console.log(process.env.SECRET);
+}
+
 const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
@@ -11,9 +16,12 @@ const passport = require("passport");
 const LocalStrategy = require("passport-local")
 const User = require("./models/user.js");   
 
+
 const listingRouter = require("./routes/listing.js")
 const reviewRouter = require("./routes/review.js")
 const userRouter = require("./routes/user.js")
+
+const dbURL = process.env.ATLASDB_URL;
 
 main()
     .then(() => {
@@ -22,12 +30,13 @@ main()
     .catch(err => console.log(err));
 
 async function main() {
-  await mongoose.connect('mongodb://127.0.0.1:27017/BearBnb');
+  await mongoose.connect(dbURL);
 } 
 
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine','ejs');
-app.use(express.urlencoded({extended : true})); //req body ki body ko parse krne ke liye
+app.use(express.urlencoded({extended : true}));
+app.use(express.urlencoded({extended : true})); //req body from forms ki body ko parse krne ke liye
 app.use(methodOverride('_method'))
 app.engine('ejs', ejsMate);
 app.use(express.static(path.join(__dirname, "/public")));
@@ -64,15 +73,6 @@ app.use((req, res, next) => {
     res.locals.currUser = req.user;
     next();
 })
-
-// app.get("/demouser", async(req,res)=>{
-//     let fakeUser = new User({
-//         email : "student@hemant",
-//         username : "delta-student"
-//     })
-//     let regisUser = await User.register(fakeUser, "helloworld");
-//     res.send(regisUser);
-// })
  
 app.use("/listings", listingRouter);
 app.use("/listings/:id/reviews", reviewRouter);
@@ -87,19 +87,6 @@ app.use((err, req, res, next) => {
     let {statusCode=500, message="Something went wrong!"} = err;
     res.status(statusCode).render("error.ejs", {message});
 })
-
-// app.get("/testListing", async (req, res) => {
-//     let sampleListing = new Listing ({
-//         title : "My New Villa",
-//         description : "By the mountains",
-//         price : 1200,
-//         loaction : "Chamoli, Uttrakhand",
-//         country : "India",
-//     })
-//     await sampleListing.save();
-//     console.log("sample was saved");
-//     res.send("successful test");
-// });
 
 app.listen(8080, () =>{
     console.log("server listening on port 8080");
