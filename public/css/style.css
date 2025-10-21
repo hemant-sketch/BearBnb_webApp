@@ -105,6 +105,7 @@ body {
 
 /* Show Page */
 .show-img {
+    margin-top: 0.7rem;
     height: 30vh;
 }
 
