@@ -35,3 +35,35 @@ Ensure you have the following software installed on your machine:
 ### Environment Variables
 
 This project requires environment variables for secure operation (like database connection and cloud storage). Create a file named **`.env`** in the root directory and populate it with the following required variables:
+
+### Steps
+
+1.  **Clone the repository:**
+    ```bash
+    git clone [https://github.com/hemant-sketch/BearBnb_webApp.git](https://github.com/hemant-sketch/BearBnb_webApp.git)
+    cd BearBnb_webApp
+    ```
+
+2.  **Install dependencies:**
+    ```bash
+    npm install
+    ```
+
+3.  **Initialize Database (Optional):**
+    If you have an `init` directory or file (like `init/index.js`), you may need to run a command to seed the database with initial data.
+    ```bash
+    # Check your project for the exact command to run the init script
+    node init/index.js
+    ```
+
+---
+
+## 💻 Usage
+
+### Running the Application
+
+Once installation and configuration are complete, start the application server using Node:
+
+```bash
+# This command starts the server defined in app.js
+node app.js
