@@ -1,65 +1,37 @@
-# 🌟 <PROJECT TITLE>
+# 🐻 BearBnb: A Full-Stack Airbnb Clone
 
-[![License](https://img.shields.io/badge/License/MIT-blue.svg)](LICENSE)
-[![GitHub Stars](https://img.shields.io/github/stars/<YOUR_USERNAME>/<PROJECT_NAME>.svg?style=social)](https://github.com/<YOUR_USERNAME>/<PROJECT_NAME>/stargazers)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+[![GitHub language count](https://img.shields.io/github/languages/count/hemant-sketch/BearBnb_webApp)](https://github.com/hemant-sketch/BearBnb_webApp)
+[![GitHub top language](https://img.shields.io/github/languages/top/hemant-sketch/BearBnb_webApp)](https://github.com/hemant-sketch/BearBnb_webApp)
+
 ## 🚀 Overview
 
-A clear and concise description of your project.
+The **BearBnb** project is a comprehensive, full-stack web application developed as an Airbnb clone. It uses the modern Node.js ecosystem with the **MERN** stack fundamentals (MongoDB, Express, Node.js) and the **EJS** templating engine, following a Model-View-Controller (MVC) architecture.
 
-The **<PROJECT TITLE>** is a **<type of project, e.g., lightweight Python library, modern web application, robust command-line tool>** designed to **<the main problem it solves>**. Its primary goal is to **<the main feature or value proposition>**, making **<specific task>** simple and efficient.
+This application provides a robust platform for managing rental listings, user authentication, and reviews, showcasing strong backend and frontend development skills.
 
 ## ✨ Features
 
-* **<Feature 1>**: Briefly explain the capability (e.g., "Supports real-time data streaming.").
-* **<Feature 2>**: Briefly explain the capability (e.g., "Clean, intuitive API for easy integration.").
-* **<Feature 3>**: Briefly explain the capability (e.g., "Includes built-in testing utilities.").
+* **Full CRUD Functionality:** Users can create, read, update, and delete rental listings.
+* **Authentication & Authorization:** Secure user login/registration using **Passport.js**.
+* **User Profiles:** Separate listings and reviews tied to specific users.
+* **Review System:** Users can add and delete reviews for listings.
+* **Database Management:** Utilizes **MongoDB** with **Mongoose** for data modeling.
+* **Responsive Design:** Styled using **Bootstrap 5** for a seamless experience on all devices.
+* **Cloud Hosting:** Configured for image uploads using Cloudinary (based on `cloudConfig.js` file presence).
 
 ---
 
-## 🛠️ Installation
+## 🛠️ Installation & Setup
 
 ### Prerequisites
 
-Ensure you have the following installed on your system:
+Ensure you have the following software installed on your machine:
 
-* **<Software/Tool 1>** (e.g., Node.js v16+, Python 3.10+)
-* **<Software/Tool 2>** (e.g., Docker)
+1.  **Node.js** (v18 or higher recommended)
+2.  **MongoDB** (running locally or a connection string from Atlas)
+3.  **Git**
 
-### Steps
+### Environment Variables
 
-1.  **Clone the repository:**
-    ```bash
-    git clone [https://github.com/](https://github.com/)<YOUR_USERNAME>/<PROJECT_NAME>.git
-    cd <PROJECT_NAME>
-    ```
-
-2.  **Install dependencies:**
-    ```bash
-    # Example for Python:
-    pip install -r requirements.txt
-    
-    # Example for Node.js:
-    npm install
-    ```
-    
-3.  **Configuration (if needed):**
-    If your project requires environment variables, explain how to set them up (e.g., "Create a file named `.env` based on the provided `.env.example`").
-
----
-
-## 💻 Usage
-
-### Quick Example
-
-Show a minimal code snippet or command to demonstrate the project's core functionality immediately.
-
-```<LANGUAGE_OF_EXAMPLE>
-// Example for a Node.js script
-const { runTask } = require('./index');
-
-async function main() {
-    const data = await runTask('input_file.csv');
-    console.log(data.summary);
-}
-
-main();
+This project requires environment variables for secure operation (like database connection and cloud storage). Create a file named **`.env`** in the root directory and populate it with the following required variables:
