@@ -67,3 +67,37 @@ Once installation and configuration are complete, start the application server u
 ```bash
 # This command starts the server defined in app.js
 node app.js
+
+### Accessing the Application
+
+After running the command above, the server should start. You can access the application in your web browser at:
+
+**Local Development:** `http://localhost:8080/` (or the port defined in your `app.js`)
+
+### Deployment
+
+This application is currently deployed and available for live viewing.
+
+**Live Demo:** [https://bearbnb-webapp.onrender.com/](https://bearbnb-webapp.onrender.com/)
+
+---
+
+## 🤝 Contributing
+
+We welcome contributions! Please follow these steps to help improve the project:
+
+1.  Fork the Project.
+2.  Create your Feature Branch (`git checkout -b feature/AmazingFeature`).
+3.  Commit your Changes (`git commit -m 'feat: Add some AmazingFeature'`).
+4.  Push to the Branch (`git push origin feature/AmazingFeature`).
+5.  Open a Pull Request.
+
+## 📝 License
+
+This project is licensed under the **MIT License**. See the `LICENSE` file for more details.
+
+## 📧 Contact
+
+**Hemant Sketch** - <Your Professional Email Address or LinkedIn Profile Link>
+
+Project Link: [https://github.com/hemant-sketch/BearBnb_webApp](https://github.com/hemant-sketch/BearBnb_webApp)
