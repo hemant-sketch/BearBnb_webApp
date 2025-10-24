@@ -137,7 +137,7 @@ BearBnb_webApp/
 
 ## 🎨 Screenshots
 
-_Add screenshots of your application here_
+![BearBnb Project Screenshot](https://raw.githubusercontent.com/hemant-sketch/Portfolio/main/public/BearBnb.png)
 
 ## 🚢 Deployment
 
